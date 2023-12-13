@@ -135,6 +135,11 @@ public class ANSIUtility {
     public static final int BRIGHT_WHITE = 97;
 
     /**
+     * ESC escape
+     */
+    private static final String ESC = "\u001B[";
+
+    /**
      * ANSI reset escape
      */
     public static final String RESET = "\u001B[0m";
@@ -218,7 +223,7 @@ public class ANSIUtility {
      */
     public static void moveTo(int row, int col) {
         if (row > 0 && col > 0) {
-            System.out.print("\u001b[" + row + ";" + col + "H");
+            System.out.print(ESC + row + ";" + col + "H");
         }
     }
 
@@ -232,7 +237,7 @@ public class ANSIUtility {
      */
     public static void setForegroundColor(int code) {
         if (isColorCodeValid(code)) {
-            System.out.print("\u001b[" + code + "m");
+            System.out.print(ESC + code + "m");
         }
     }
 
@@ -243,7 +248,7 @@ public class ANSIUtility {
      */
     public static void setBackgroundColor(int code) {
         if (isColorCodeValid(code)) {
-            System.out.print("\u001b[" + (code + 10) + "m");
+            System.out.print(ESC + (code + 10) + "m");
         }
     }
 
@@ -258,7 +263,7 @@ public class ANSIUtility {
      */
     public static void setColor(int bg, int fg) {
         if (isColorCodeValid(bg) && isColorCodeValid(fg)) {
-            System.out.print("\u001b[" + fg + ";" + (bg + 10) + "m");
+            System.out.print(ESC + fg + ";" + (bg + 10) + "m");
         }
     }
 
