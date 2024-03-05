@@ -276,4 +276,32 @@ public class ANSIUtility {
     private static boolean isColorCodeValid(int code) {
         return code >= 30 && code <= 37 || code >= 90 && code <= 97;
     }
+    
+    /**
+     * Prints a color formatted string, as a `printf` function would, with the
+     * addition of a color foreground.
+     *
+     * @param format the format string
+     * @param color the ANSI color code
+     * @param args the arguments to the `printf` function
+     */
+    public static void printcf(String format, int color, Object... args) {
+        setForegroundColor(color);
+        System.out.printf(format, args);
+        reset();
+    }
+
+    /**
+     * Prints a color formatted string, as a `printf` function would, with the
+     * addition of a color background.
+     *
+     * @param format the format string
+     * @param color the ANSI color code
+     * @param args the arguments to the `printf` function
+     */
+    public static void printbcf(String format, int color, Object... args) {
+        setBackgroundColor(color);
+        System.out.printf(format, args);
+        reset();
+    }
 }
